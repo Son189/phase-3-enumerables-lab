@@ -45,9 +45,11 @@ end
 # given an array of spicy foods and a string representing a cuisine, **return a single hash**  
 # for the spicy food whose cuisine matches the cuisine being passed to the method
 def get_spicy_food_by_cuisine(spicy_foods, cuisine)
-spicy_ foods.map do |spicy|
- spicy[:cuisine] == cuisine
+spicy_foods.find do |cuisin|
+  cuisin[:cuisine]== cuisine
   # your code here
+  #spicy_foods.map do |spicy_foods,cuisine|
+   #     "spicy_foods #{:cuisine} " 
 end
 end
 
@@ -55,7 +57,8 @@ end
 # sorted by heat level from lowest to highest
 def sort_by_heat(spicy_foods)
   # your code here
-
+  spicy_foods.sort_by{ |hotest| hotest[:heat_level]}
+ 
  
 end
 
@@ -65,6 +68,12 @@ end
 # HINT: Try to use methods you've already written to solve this!
 def print_spiciest_foods(spicy_foods)
   # your code here
+  spicy_foods.select do |s|
+    b="🌶"
+    if s[:heat_level]>5
+    puts "#{s[:name]} (#{s[:cuisine]}) | Heat Level: #{b*s[:heat_level]}"
+end
+end
 end
 
 # given an array of spicy foods, return an integer representing 
@@ -72,6 +81,6 @@ end
 def average_heat_level(spicy_foods)
   # your code here
   spicy_foods.sum do |b|
-    b[:heat_level]/heat_level.length
+    b[:heat_level]/3
 end
 end
